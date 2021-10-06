@@ -22,7 +22,7 @@
     "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^10.0.2",
     "babel-loader": "^8.0.0",
-    "copy-webpack-plugin": "^5.1.1",
+    "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^3.4.2",
     "css-minimizer-webpack-plugin": "1.1.5",
     "hard-source-webpack-plugin": "^0.13.1",

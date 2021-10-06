@@ -26,7 +26,7 @@ defmodule FlyWeb.Router do
     live_session :authenticated, on_mount: FlyWeb.Plugs.RequireSession do
       live "/apps", AppLive.Index, :index
       live "/apps/:name", AppLive.Show, :show
-      live "/apps/:name/status", AppLive.Status
+      live "/apps/:name/status", AppLive.Status, :status
     end
   end
 

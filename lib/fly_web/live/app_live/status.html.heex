@@ -1,3 +1,90 @@
+<!--unknown instance-->
+<style>
+  .loader-unknown {
+    border-top-color: gray;
+    -webkit-animation: spinner 1.5s linear infinite;
+    animation: spinner 1.5s linear infinite;
+  }
+
+  @-webkit-keyframes spinner {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+<!--Healthy instance-->
+<style>
+  .loader-healthy {
+    border-top-color: green;
+    -webkit-animation: spinner 1.5s linear infinite;
+    animation: spinner 1.5s linear infinite;
+  }
+
+  @-webkit-keyframes spinner {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+<!--Unhealthy instance-->
+<style>
+  .loader-unhealthy {
+    border-top-color: red;
+    -webkit-animation: spinner 1.5s linear infinite;
+    animation: spinner 1.5s linear infinite;
+  }
+
+  @-webkit-keyframes spinner {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
 <div>
   <div class="bg-gray-800 pb-32">
     <nav class="bg-gray-800">
@@ -6,15 +93,12 @@
           <div class="flex items-center justify-between h-16 px-4 sm:px-0">
             <div class="flex items-center">
               <div class="flex-shrink-0">
-                <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
+                <img class="h-8 w-8" src="https://fly.io/ui/images/favicon/favicon-32x32.png" alt="Workflow">
               </div>
               <div class="hidden md:block">
                 <div class="ml-10 flex items-baseline space-x-4">
-                  <HeaderBreadcrumbs.render name={"hermann"} breadcrumbs={[
-                    {"Apps", Routes.app_index_path(@socket, :index)},
-                    {@app_name, Routes.app_show_path(@socket, :show, @app_name)},
-                    {"Status", ""}
-                  ]} />
+                  <HeaderBreadcrumbs.render name={"hermann"} breadcrumbs={[ {"Apps", Routes.app_index_path(@socket,
+                    :index)}, {@app_name, Routes.app_show_path(@socket, :show, @app_name)}, {"Status", "" } ]} />
                   </div>
                 </div>
               </div>
@@ -28,12 +112,15 @@
           </div>
         </div>
       </nav>
+      <%# Header start %>
       <header class="py-10">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
+        <div
+          class="max-w-3xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
           <div class="flex-1 min-w-0">
             <h2 class="text-2xl font-bold leading-7 text-white-900 sm:text-3xl sm:truncate">
               <%= @app_name %>
-              <p class={"px-2 mx-4 inline-flex text-xs leading-5 font-semibold rounded-full #{status_bg_color(@status)} #{status_text_color(@status)}"}>
+              <p class={"px-2 mx-4 inline-flex text-xs leading-5 font-semibold rounded-full
+                  #{status_bg_color(@status)} #{status_text_color(@status)}"}>
                 <%= @status["status"] %>
               </p>
             </h2>
@@ -51,32 +138,270 @@
           <div class="col-lg-6">
 
             <div class="mt-5 flex lg:mt-0 lg:ml-4">
-              <%= if @status["deployed"] == true do %>
+              <%= if @status["deployed"]==true do %>
                 <span class="hidden sm:block ml-3">
-                  <%= link to: preview_url(@status), target: "_blank", class: "inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" do %>
+                  <%= link to: preview_url(@status), target: "_blank" ,
+                    class: "inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    do %>
                     <!-- Heroicon name: solid/link -->
-                    <svg class="-ml-1 mr-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
+                    <svg class="-ml-1 mr-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                      fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd"
+                        d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
+                        clip-rule="evenodd" />
                     </svg>
                     View
                   <% end %>
                 </span>
               <% end %>
             </div>
-            <div class="mt-10 flex lg:mt-5 lg:ml-4">
+            <div class="mt-10 flex lg:mt-3 lg:ml-4">
               <span class="hidden sm:block ml-3">
-                <%= link to: Routes.app_show_path(@socket, :show, @app_name), target: "_blank", class: "inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" do %>
-                  <!-- Heroicon name: solid/link -->
-                  <svg class="-ml-1 mr-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
-                  </svg>
-                  Detail
-                <% end %>
-              </span>
+                <%= link to: Routes.app_show_path(@socket, :show, @app_name), target: "_blank" ,
+                  class: "inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  do %>
+                  <svg class="-ml-1 mr-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"
+                      clip-rule="evenodd" />
+                      <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
+                      clip-rule="evenodd" />
+                    </svg>
+                    Detail
+                  <% end %>
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-      </header>
-    </div>
+        </header>
+        <%# Header end %>
+      </div>
+      <!-- Status start -->
 
-  </div>
+      <%= if @status do %>
+        <main class="-mt-32">
+          <%# <div class="max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3"> %>
+          <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="space-y-6 lg:col-start-1 lg:col-span-2">
+              <!-- Description list start -->
+              <section>
+                <!-- App -->
+                <div class="bg-white shadow sm:rounded-lg mb-10">
+                  <div class="px-4 py-5 sm:px-6">
+                    <h2 class="text-lg leading-6 font-medium text-gray-900">
+                      App
+                    </h2>
+                  </div>
+                  <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                    <div class="sm:col-span-2">
+                      <dd class="mt-1 text-sm text-gray-900">
+                        <div class="flex flex-col">
+                          <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                              <div class="overflow-hidden border-b border-gray-200">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                  <thead class="bg-gray-50">
+                                    <tr>
+                                      <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Name
+                                      </th>
+                                      <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Owner
+                                      </th>
+                                      <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Version
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        <%= @status["name"] %>
+                                      </td>
+                                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        <%= @status["organization"]["slug"] %>
+                                      </td>
+                                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <%= @status["version"] %>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </dd>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Deployement status -->
+                <%= if not is_nil(@status["deploymentStatus"]) do %>
+                  <div class="bg-white shadow sm:rounded-lg">
+                    <div class="px-4 py-5 sm:px-6">
+                      <h2 class="text-lg leading-6 font-medium text-gray-900">
+                        Deployment Status
+                      </h2>
+                    </div>
+                    <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                      <div class="sm:col-span-2">
+                        <dd class="mt-1 text-sm text-gray-900">
+                          <div class="flex flex-col">
+                            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                              <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                <div class="overflow-hidden border-b border-gray-200">
+                                  <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                      <tr>
+                                        <th scope="col"
+                                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                          ID
+                                        </th>
+                                        <th scope="col"
+                                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                          Version
+                                        </th>
+                                        <th scope="col"
+                                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                          Status
+                                        </th>
+                                        <th scope="col"
+                                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                          Description
+                                        </th>
+                                        <th scope="col"
+                                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                          Instances
+                                        </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                      <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                          <%= @status["id"] %>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                          <%= @status["version"] %>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                          <%= @status["status"] %>
+                                        </td>
+                                        <td class="px-6 py-4 wh-nowrap text-sm text-gray-500">
+                                          <%= @status["description"] %>
+                                        </td>
+                                        <td class="px-6 py-4 wh-nowrap text-sm text-gray-500">
+                                          <%= @status["desiredCount"] %>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </dd>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </section>
+              <!-- Description list end -->
+            </div>
+
+          </div>
+          <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <h2>Instances runnings</h2>
+            <!-- Instances list start -->
+            <%# <div class="space-y-12 lg:col-start-1 lg:col-span-2"> %>
+            <div class="flex flex-col">
+              <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                  <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-200">
+                      <thead class="bg-gray-50">
+                        <tr>
+                          <th scope="col"
+                          class="px-6 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            ID
+                          </th>
+                          <th scope="col"
+                          class="px-6 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Task
+                          </th>
+                          <th scope="col"
+                          class="px-6 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Status
+                          </th>
+                          <th scope="col"
+                          class="px-6 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Health
+                          </th>
+                          <th scope="col"
+                          class="px-6 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Check-Restarts
+                          </th>
+                          <th scope="col"
+                          class="px-6 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Created
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody class="bg-white divide-y divide-gray-200">
+                        <%= for instance <- @status["allocations"] do %>
+
+                          <tr>
+                            <%# ID  %>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                              <%= instance["idShort"] %>
+                            </td>
+                            <%# Task name %>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                              <%= instance["taskName"] %>
+                            </td>
+                            <%# Status %>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                              <span class={"px-2 inline-flex text-xs leading-5 font-semibold rounded-fulll #{status_bg_color(@status)} #{status_text_color(@status)}"}>
+                                <%= instance["status"] %>
+                              </span>
+                            </td>
+                            <%# Health %>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                              <div class="text-sm text-gray-900"><%= instance_health(instance) %></div>
+                              <div class="justify-center items-center">
+                                <div class={"#{instance_health_loader(instance)} ease-linear rounded-full border-8 border-t-8 border-gray-200 h-8 w-8"}></div>
+                              </div>
+                            </td>
+                            <%# Cheks %>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <%= for chek <- instance["checks"] do %>
+                               Status: <%= chek["status"] %>
+                            <% end %>
+                            </td>
+                            <%# Date created %>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                              <%= sec_to_str(instance["createdAt"]) %> Ago
+                            </td>
+                          </tr>
+                        <% end %>
+
+                        <!-- More people... -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <%# </div> %>
+            <!-- Instances list end -->
+          </div>
+        </main>
+      <% end %>
+
+      <!-- Status end  -->
+
+    </div>

@@ -4,6 +4,7 @@ defmodule FlyWeb.AppLive.Show do
 
   alias Fly.Client
   alias FlyWeb.Components.HeaderBreadcrumbs
+  alias Calendar
 
   @impl true
   def mount(%{"name" => name}, session, socket) do
@@ -66,6 +67,17 @@ defmodule FlyWeb.AppLive.Show do
       _ -> "text-yellow-800"
     end
   end
+
+  def convert_date(date) do
+    case date do
+        nil ->
+          ""
+        date ->
+          NaiveDateTime.from_iso8601!(date)
+          |>Calendar.strftime("%a, %d %b %Y at %H:%M:%S")
+    end
+  end
+
 
   def preview_url(app) do
     "https://#{app["name"]}.fly.dev"
